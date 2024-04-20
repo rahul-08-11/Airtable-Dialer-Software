@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GoCargo Dialer Page</title>
+    <link rel="stylesheet" href="static/css/dialer.css">
+</head>
+<body>
+    <header>
+        <div id="data" data-name="{{ name_ }}" data-number="{{ number }}" data-identifier="{{ identifier }}"></div>
+        <h8 id="notify-call-state">Preparing Call...Relax </h8>
+        <h1 id="header"></h1>
+        <button id="startup-button"></button>
+    </header>
+    <main id="controls">
+        <section class="column1" id="info">
+            <h2></h2>
+            <div id="client-name"></div>
+            <div id="output-selection" class="hide">
+                <label for="ringtone-devices">Ringtone Devices</label>
+                <select id="ringtone-devices" multiple></select>
+                <label for="speaker-devices">Speaker Devices</label>
+                <select id="speaker-devices" multiple></select>
+                <button id="get-devices">Seeing "Unknown" devices?</button>
+            </div>
+        </section>
+        <section class="column">
+            <div id="call-controls" class="hide">
+                <h7 id="clientname">Calling to </h7>
+                <div style="display: flex; justify-content: center;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJbxYIQie2C2eT4GE3X5o09ae2NrkOb2pDdo-5JUc7j-TIadf9tpWEo0sgIsl6ZBP-uno&usqp=CAU" alt="Client Icon" id="client-icon">
+                </div>
+                <form>
+                    <h6 id="callbar">Call In Progress</h6>
+                </form>
+                <button id="button-call" type="submit" class="hide">Call</button>
+                <button id="button-hangup-outgoing" class="hide">Hang Up</button>
+                <button id="button-mute" class="hide">Mute</button>
+            </div>
+        </section>
+        <!-- Dial pad section -->
+        <section id="dial-pad">
+            <div id="dial-pad-container">
+                <div id="dial-pad-buttons">
+                    <div class="dial-pad-row">
+                        <button class="dial-pad-button" id="one">1</button>
+                        <button class="dial-pad-button" id="two">2</button>
+                        <button class="dial-pad-button" id="three">3</button>
+                    </div>
+                    <div class="dial-pad-row">
+                        <button class="dial-pad-button" id="four">4</button>
+                        <button class="dial-pad-button" id="five">5</button>
+                        <button class="dial-pad-button" id="six">6</button>
+                    </div>
+                    <div class="dial-pad-row">
+                        <button class="dial-pad-button" id="seven">7</button>
+                        <button class="dial-pad-button" id="eight">8</button>
+                        <button class="dial-pad-button" id="nine">9</button>
+                    </div>
+                    <div class="dial-pad-row">
+                        <button class="dial-pad-button" id="zero">0</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="static/twiliojs/twilio.min.js"></script>
+    <script src="static/twiliojs/twilio_device.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Show message
+            const motivationalPhrases = [
+                "Empower the Conversation 💬",
+                "Make Every Call Count 📞",
+                "Create Meaningful Connections ✨",
+                "Inspire with Your Voice 🎤",
+                "Spread Positivity, One Call at a Time 🌟",
+                "Engage, Empathize, Excel 🌟",
+                "Your Voice, Their Solution 📞",
+                "Connect, Converse, Convert 🔄",
+                "Bring Joy to Every Interaction 😊",
+                "Your Energy, Their Success ⚡️"
+            ];
+
+            // Randomly select a motivational phrase
+            const randomIndex = Math.floor(Math.random() * motivationalPhrases.length);
+            const selectedPhrase = motivationalPhrases[randomIndex];
+            $("#header").text(selectedPhrase);
+            // Example: Hide the main controls permanently
+            $("#startup-button").hide();
+            $("#phone-number").hide();
+            $("#info").hide();
+
+            // Simulate button clicks after a certain delay
+            setTimeout(function() {
+                $("#startup-button").click();
+            }); 
+        });
+    </script>
+</body>
+</html>

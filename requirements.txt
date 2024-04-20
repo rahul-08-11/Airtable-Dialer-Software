@@ -1,0 +1,13 @@
+pyairtable
+Werkzeug==2.2.2
+twilio~=9.0.0
+flask
+schedule
+flask-cors
+gspread
+oauth2client
+pandas
+pytz
+python-dotenv
+flasgger
+gunicorn

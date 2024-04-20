@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mediate Browser</title>
+</head>
+<body>
+    <script>
+        var type = "{{ channel_type }}";
+        var ngrok_link = "https://ec78-103-237-156-97.ngrok-free.app";
+
+        function openBrowser() {
+            // Specify the desired width and height for the browser window
+            var width = 500; 
+            var height = 350; 
+
+            // Calculate the position of the window to center it on the screen
+            var left = (screen.width - width) / 2;
+            var top = (screen.height - height) / 2;
+
+            // Define additional window features for call 
+            var windowFeatures_call = 'width=' + width + ',height=' + height + ',top=' + top + ',left=' + left
+                + ',menubar=no,toolbar=no,location=no,status=no,resizable=no';
+
+            // Define additional window features for sms
+                        // Define additional window features (optional)
+            var windowFeatures_sms = 'width=' + (width+150) + ',height=' + (height +200) + ',top=' + top + ',left=' + left
+                + ',menubar=no,toolbar=no,location=no,status=no,resizable=no';
+
+            // Fetch data from the endpoint
+            if (type == "call") {
+                // Open a new browser window with the specified size and features
+                var browserWindow = window.open(`${ngrok_link}/dialer-popup`, '_blank', windowFeatures_call);
+                browserWindow.focus();
+            } else if (type == "sms") {
+                var browserWindow = window.open(`${ngrok_link}/sms`, '_blank', windowFeatures_sms);
+                browserWindow.focus();
+            }
+            window.close(); // Close the current window
+            // You can now use the data as needed
+        }
+
+        window.onload = function() {
+            openBrowser(); // Call the openBrowser function when the window loads
+        };
+    </script>
+</body>
+</html>

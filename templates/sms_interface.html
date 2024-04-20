@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Sender</title>
+    <link rel="stylesheet" href="static/css/sms.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h3>Messaging Interface</h3>
+        <form id="messageForm">
+            <h1 id="client-name">Client Name: {{ name_ }}</h1>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit" id="submit">Send</button>
+        </form>
+        <h2 id="status-message"></h2>
+    </div>
+
+    <!-- library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        // Define variables
+        var To = "{{ number }}";
+        var client_name = "{{ name_ }}";
+        var sms_submit = document.getElementById("submit");
+        var sms_status = document.getElementById("status-message");
+        var messageInput = document.getElementById("message");
+
+        // Add event listener to form submission
+        document.getElementById("messageForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            sendMessage(); // Call sendMessage function
+        });
+
+        // Function to send message
+        function sendMessage() {
+            // Disable submit button and show status message
+            sms_submit.disabled = true;
+            sms_status.textContent = "Message has been Sent ✔";
+
+            // Get message from textarea
+            var message = messageInput.value;
+
+            // Configure the fetch request
+            fetch("/message", {
+                method: "POST", // HTTP method
+                body: JSON.stringify({
+                    message: message,
+                    To: To
+                }), // Convert message to JSON string
+                headers: {
+                    "Content-type": "application/json" // Specify content type as JSON
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Message sent:', data);
+            })
+            .catch(error => {
+                console.error('There was a problem with your fetch operation:', error);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

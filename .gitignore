@@ -1,0 +1,4 @@
+.vscode/
+__pycache__/
+agent_data.json
+node_modules
