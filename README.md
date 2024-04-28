@@ -1,4 +1,4 @@
-# Airtable-Dialer-Software ![alt text](https://img.shields.io/badge/Airtable-v1.8.0-FF4154) ![alt text](https://img.shields.io/badge/JavaScript-v18.13.0-F7DF1E) ![alt text](https://img.shields.io/badge/Flask-v0.3..-0000) 
+# Airtable-Dialer-Software ![alt text](https://img.shields.io/badge/Flask-v0.3.0-0000)  ![alt text](https://img.shields.io/badge/Airtable-v1.8.0-FF4154) ![alt text](https://img.shields.io/badge/JavaScript-v18.13.0-F7DF1E) 
 
 
 Welcome to the Backend repository for the Dialer Project!<br>
