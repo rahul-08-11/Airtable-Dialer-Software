@@ -15,7 +15,7 @@ This repoisotry consist of backend implementation for the [Airtable Dialer Exten
 - **User Authentication**: User authentication is implemented to ensure secure access to the backend resources. Only registered users with valid credentials can access the system functionalities.<br>
 
 - **Airtable Integration**: The backend server integrates with the Airtable API to seamlessly fetch and update lead data stored in the Airtable database. This integration allows the system to retrieve client information, such as contact details, leads or recommendation, and interaction or notes, directly from the Airtable database. It enables real-time synchronization of data between the frontend application and the Airtable database, this allow agent to update airtable database through the UI itself.
-- 
+
 - **Error Handling**: Robust error handling mechanisms are implemented to handle unexpected errors and provide meaningful responses to API requests.<br>
  
 - **Popup Integration**: The backend is responsible for managing requests for popups from the Airtable. The popup dialer is called whenever the user or agent clicks on the associated button. The request is received, and the backend responds with the dynamic webpage necessary to set calls or send SMS.<br>
